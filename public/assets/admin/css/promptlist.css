@@ -1,0 +1,66 @@
+.add-prompt-container {
+  text-align: right;
+  margin-top: 10px;
+  /* Adjust as needed */
+}
+
+.add-prompt-button {
+  border-radius: 5px;
+  padding: 10px 20px;
+  /* background: linear-gradient(to bottom, #f74a7f, #972cd0); */
+  background-color: #9896f1;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* table css  */
+.table-wrapper {
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 20px;
+  /* Adjust as needed */
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.table th {
+  /* background: linear-gradient(to bottom, #f74a7f, #972cd0); */
+  /* color: white; */
+  background-color: #9896f1;
+
+}
+
+
+/* Background colors for columns (adjust colors as needed) */
+
+
+.edit-btn,
+.delete-btn {
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  /* background: linear-gradient(to bottom, #f74a7f, #972cd0); */
+  background-color: #9896f1;
+  color: white;
+
+}
+
+
+/* prompt css  */
+.table-wrapper .table th {
+  padding: 10px;
+  text-align: center;
+  /* color: white; Ensure text color inside table cells is white */
+}

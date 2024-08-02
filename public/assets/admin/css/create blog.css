@@ -1,0 +1,86 @@
+/* Style for the dropdowns and date picker */
+#categorySelect, #PromptSelect, #dateSelect {
+  outline: none;
+  background-color: #9896f1;
+  border: none;
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 30px; /* Adjust padding to make space for the icon */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14l-4.796-5.481A.5.5 0 0 1 2.653 5h10.694a.5.5 0 0 1 .402.82l-4.796 5.481a.5.5 0 0 1-.806 0z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
+
+/* Hide the default dropdown icon in IE */
+#categorySelect::-ms-expand, #PromptSelect::-ms-expand {
+  display: none;
+}
+
+/* Table styling */
+.table-bordered {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #dee2e6;
+  background-color: #9896f1;
+  color: white;
+}
+
+#thead-dark {
+  background-color: #9896f1;
+  padding: 20px;
+  color: white;
+}
+
+/* Keyword list styling */
+#keywordList {
+  list-style-type: none;
+  padding: 0;
+}
+
+#keywordList li {
+  margin-bottom: 5px;
+  padding-left: 1.5em;
+  position: relative;
+}
+
+#keywordList li input[type="radio"] {
+  margin-top: 6px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Placeholder styling */
+::placeholder {
+  color: white;
+}
+
+/* Column width adjustments */
+.keyword-column {
+  width: 25%;
+}
+
+.category-column {
+  width: 20%;
+}
+
+.domain-column {
+  width: 20%;
+}
+
+.prompt-column {
+  width: 20%;
+}
+
+.date-column {
+  width: 15%;
+}

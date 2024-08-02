@@ -1,0 +1,345 @@
+/* Basic styling for the table and expanded content */
+.expandable-row .expanded-content {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+}
+
+/* Styling for the buttons */
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn, .delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+/* Your custom Tailwind CSS classes or overrides */
+.self-stretch {
+  align-self: stretch;
+}
+
+.bg-neutral-n10 {
+  background-color: #f0f0f0;
+}
+
+.bg-neutral-n0 {
+  background-color: #ffffff;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.max-w-full {
+  max-width: 100%;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-neutral-n400 {
+  color: #b0b0b0;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.list-decimal {
+  list-style-type: decimal;
+}
+
+.ml-8 {
+  margin-left: 2rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.box-border {
+  box-sizing: border-box;
+}
+
+/* Responsive classes */
+.mq1050\\:flex-wrap {
+  flex-wrap: wrap;
+}
+
+.mq750\\:min-w-full {
+  min-width: 100%;
+}
+
+.mq450\\:box-border {
+  box-sizing: border-box;
+}
+
+/* Global styles */
+.text-center {
+text-align: center;
+}
+
+.button-container {
+display: flex;
+justify-content: center;
+gap: 5px; /* Adjust the gap between buttons if needed */
+}
+
+button {
+background: none;
+border: none;
+cursor: pointer;
+padding: 10px;
+}
+
+button i {
+transition: transform 0.2s;
+}
+
+button:hover i {
+transform: scale(1.1);
+}
+
+/* Table styling */
+.container {
+  width: 100%;
+  margin: 15px; /* Adjust margin for container */
+}
+
+.table {
+width: 90%; /* Full width for the table */
+border-collapse: collapse;
+margin-top: 20px;
+margin: auto;
+}
+
+.table th,
+.table td {
+padding: 12px 16px;
+border-bottom: 1px solid #e5e7eb; /* Border color for each row */
+}
+
+.table th {
+background-color: #f3f4f6; /* Header background color */
+font-weight: bold;
+border-top: 1px solid #e5e7eb; /* Top border for headers */
+}
+
+.edit-btn,
+.delete-btn {
+background: none;
+border: none;
+cursor: pointer;
+}
+
+.edit-btn i,
+.delete-btn i {
+font-size: 25px;
+}
+
+.edit-btn i {
+color: blue;
+}
+
+.delete-btn i {
+color: red;
+}
+
+/* Spinner styling */
+.tl-spinner-dot {
+display: inline-block;
+width: 1.5em; /* Adjust size as needed */
+height: 1.5em; /* Adjust size as needed */
+border: 0.2em dotted currentColor; /* Dotted border */
+border-right-color: transparent;
+border-radius: 50%;
+animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+to {
+  transform: rotate(360deg);
+}
+}
+
+/* Expanded row styling */
+.expandable-content {
+display: none;
+background-color: #f0f4f8; /* Example background color */
+padding: 1rem; /* Adjust padding as needed */
+}
+
+.expandable-content h2 {
+margin-bottom: 1rem;
+font-size: 1.5rem; /* Example font size */
+}
+
+.expandable-content p {
+margin-bottom: 1rem;
+line-height: 1.5;
+}
+
+.expandable-content img {
+max-width: 100%;
+height: auto;
+margin-bottom: 1rem;
+}
+
+.expandable-content ol {
+margin-bottom: 1rem;
+}
+
+.expandable-content ol li {
+margin-bottom: 0.5rem;
+}
+
+.expandable-content .flex {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 1rem; /* Adjust gap as needed */
+margin-bottom: 1rem;
+}
+
+.expandable-content .flex-1 {
+flex: 1;
+margin-right: 1rem; /* Example margin */
+}
+
+.expandable-content .flex-2 {
+flex: 2;
+}
+
+/* AI Marketing Section */
+.ai-marketing-section {
+margin-top: 40px;
+}
+
+.ai-marketing-section h2 {
+font-size: 24px;
+margin-bottom: 16px;
+}
+
+.ai-marketing-section p {
+margin-bottom: 16px;
+}
+
+.ai-marketing-section img {
+width: 40%;
+}
+
+/* Social media icons */
+.social-icons {
+display: flex;
+gap: 10px;
+}
+
+.social-icons svg {
+height: 24px;
+width: 24px;
+color: #ccc;
+}
+
+/* Contact details */
+.contact-details {
+display: flex;
+align-items: center;
+gap: 20px;
+}
+
+.contact-details img {
+width: 64px;
+height: 64px;
+object-fit: cover;
+border-radius: 50%;
+}
+
+.contact-details .details {
+flex: 1;
+}
+
+.contact-details .details h3 {
+font-size: 18px;
+font-weight: bold;
+margin-bottom: 8px;
+}
+
+.contact-details .details p {
+margin-bottom: 8px;
+}
+
+.contact-details .social-icons {
+margin-top: 8px;
+}
+
+/* Divider */
+.divider {
+position: relative;
+width: 0.5px;
+height: 100%;
+background-color: #e5e7eb;
+}
+
+/* Responsive adjustments */
+@media (max-width: 750px) {
+.grid-container {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust columns for smaller screens */
+}
+
+.expanded-row {
+  padding: 12px;
+}
+}
+
+@media (max-width: 450px) {
+.grid-container {
+  grid-template-columns: 1fr; /* Single column on smaller screens */
+}
+
+.expanded-row {
+  padding: 8px;
+}
+
+.contact-details .details {
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-icons {
+  justify-content: flex-start;
+  margin-top: 4px;
+}
+}
+
+.table .actions {
+text-align: center;
+}

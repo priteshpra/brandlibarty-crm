@@ -1,0 +1,94 @@
+/* Custom CSS */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+.label-text-title {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Adjust form control width for larger screens */
+@media (min-width: 576px) {
+    .form-control {
+        width: 50%;
+    }
+}
+
+.custom-accordion {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Optional: Adjust maximum width */
+    margin: 0 auto; /* Center the accordion horizontally */
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+.accordion-item {
+    background-color: transparent; /* Optional: Adjust as needed */
+    border: 0; /* Optional: Adjust as needed */
+    margin-bottom: 1rem; /* Optional: Adjust as needed */
+}
+
+/* Positioning the form on the left with more margin */
+.form-section {
+    float: left;
+    width: 50%; /* Occupy half of the screen width */
+    margin-right: 20%; /* Adjust margin on the right */
+}
+
+/* Editor section */
+.editor-section {
+    float: left;
+    width: 30%; /* Adjust width as needed */
+    position: relative;
+}
+
+/* Editor box styles */
+.ai-assistant-rightside {
+    position: absolute;
+    top: 50%;
+    right: 0; /* Align to the right */
+    transform: translate(0, -50%); /* Center vertically */
+    z-index: 10;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%; /* Adjust width as needed */
+    max-width: 600px; /* Set maximum width */
+    height: auto; /* Make the height responsive */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+}
+
+.output-block {
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+/* Additional media query for small screens */
+@media (max-width: 576px) {
+    .form-section,
+    .editor-section {
+        width: 100%; /* Full width on smaller screens */
+        float: none; /* Reset floating */
+        margin-right: 0; /* Reset margin on smaller screens */
+    }
+
+    .ai-assistant-rightside {
+        width: 90%; /* Adjust width for smaller screens */
+        right: 5%; /* Adjust alignment for smaller screens */
+        transform: translate(0, -50%);
+    }
+}
+

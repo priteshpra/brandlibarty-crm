@@ -1,0 +1,765 @@
+/* Base styles */
+.blog-breadcrumb {
+  padding: 5px;
+  color: #333;
+  
+  
+}
+
+/* Small devices (phones, 600px and down) */
+@media (max-width: 600px) {
+  .blog-breadcrumb {
+    font-size: 0.6rem;
+    padding: 8px;
+  } 
+}
+
+/* Medium devices (portrait tablets and large phones, 600px and up) */ 
+@media (min-width: 601px) and (max-width: 768px) {
+  .blog-breadcrumb {
+    font-size: 0.7rem;
+    padding: 10px;
+    
+  }
+}
+
+/* Large devices (landscape tablets and desktops, 768px and up) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .blog-breadcrumb {
+    font-size: 0.8rem;
+    padding: 12px;
+  }
+}
+
+/* Extra large devices (large desktops, 1025px and up) */
+@media (min-width: 1025px) {
+  .blog-breadcrumb {
+    font-size: 0.9rem;
+    padding: 15px;
+  }
+}
+
+/* Blog Flex */
+.blog-flex {
+  display: flex;
+  flex-wrap: wrap;
+  /* background: linear-gradient(to bottom, #f74a7f, #972cd0); */
+  color: white;
+  border-radius: 8px; /* Added border-radius for curves */
+  background-color: #9896f1;
+
+
+}
+
+.blog-item {
+  padding: 5px; 
+  margin: 3px;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  /* background: linear-gradient(to bottom, #f74a7f, #972cd0); */
+  background-color: #9896f1;
+}
+
+/* .blog-item.bg-neutral-n30 {
+  background-color: #f0f0f0;
+} */
+
+.blog-item.larger-padding {
+  padding: 10px;
+}
+
+.action-item {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+.blog-action-icon {
+  margin: 0 5px;
+  cursor: pointer;
+  color:white;
+}
+
+.blog-action-icon:hover {
+  color: #000;
+}
+
+/* Responsive styles */
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .blog-flex {
+    flex-direction: column;
+  }
+
+  .blog-item {
+    flex: 1 1 100%;
+    padding: 4px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .blog-item {
+    flex: 1 1 50%;
+    padding: 5px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .blog-item {
+    flex: 1 1 33.33%;
+    padding: 6px;
+    font-size: 1rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .blog-item {
+    flex: 1 1 auto;
+    padding: 7px;
+    font-size: 1.1rem;
+  }
+}
+
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+/* AI Container */
+.blog-ai-container {
+  margin-top: 20px; /* Adjust as needed to position below the navbar */
+  padding: 20px;
+  
+}
+
+.blog-ai {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  position: relative; /* Ensure relative positioning for children */
+  
+}
+
+.blog-checkbox {
+  margin-left: -16px;
+  
+}
+
+.blog-ai-label {
+  margin-right: 10px;
+}
+
+.blog-icon {
+  margin-right: 10px;
+}
+
+.blog-spinner-main {
+  font-size: 36px;
+  position: absolute;
+  top: -40px;
+  left: 1010px; /* Adjusted left margin */
+}
+
+.blog-ai-img {
+  position: relative;
+  top: -100px; /* Adjusted to move it up */
+  left: 850px; /* Adjusted left position */
+}
+
+/* Relative Positioning */
+.blog-relative {
+  position: relative;
+}
+
+.blog-spinner {
+  font-size: 36px;
+  position: absolute;
+  top: -80px;
+}
+
+.blog-ai-label-small {
+  position: absolute;
+  top: -80px;
+  margin-left: 0px;
+}
+
+/* Move the specific label up */
+.blog-ai-label.move-up {
+  position: relative;
+  top: -50px; /* Adjust this value as needed */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .blog-ai {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .blog-spinner-main,
+  .blog-spinner,
+  .blog-ai-label-small {
+    margin: 10px 0;
+    position: static;
+  }
+
+  .blog-spinner-main,
+  .blog-ai-img {
+    margin-left: 0;
+    top: 0; /* Reset top position for smaller screens */
+    left: 0; /* Reset left position for smaller screens */
+  }
+}
+.blog-checkbox {
+  position: relative;
+  top: -25px; /* Adjust as needed to move the checkbox up */
+  margin-left: -1px; /* Adjust as needed to fine-tune the horizontal position */
+  
+}
+
+.blog-ai-label.move-up {
+  margin-left: 15px; /* Adjust this value to move the label to the right */
+}
+
+/* title blog containt */
+.blog-additional-content {
+  /* Add your desired styles here */
+  margin-top: -60px; /* Adjust as needed */
+  padding: 10px; /* Adjust as needed */
+}
+
+.blog-additional-content h3 {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+}
+
+.blog-additional-content p {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* code snippet content */
+.blog-snippet {
+  margin-top: 20px; /* Adjust as needed */
+  padding: 10px; /* Adjust as needed */
+}
+
+.blog-snippet h3 {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+}
+
+.blog-snippet p {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* blog features image  */
+.blog-featured-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px; /* Adjust as needed */
+}
+
+.blog-featured-title {
+  margin-right: 0; /* Remove any unwanted margin */
+  margin-bottom: 10px; /* Add space between the title and image */
+}
+
+.blog-featured-image {
+  max-width: 100%; /* Adjust image size as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* right side div content */
+/* Ensure the containers are aligned side by side */
+.blog-right-side-content {
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  align-items: flex-start; /* Align items to the top */
+  gap: 90px; /* Increase space between the two containers */
+  position: relative; /* Enable relative positioning */
+  top: -470px; /* Move the elements further up */
+  left: -200px; /* Move the elements slightly to the left */
+}
+
+.blog-Plagiarism-container,
+.blog-Unique-container {
+  display: flex;
+  align-items: center;
+}
+
+.blog-text-Plagiarism,
+.blog-Unique-text {
+  font-size: 18px; /* Adjust the font size as needed */
+  margin-right: 10px; /* Spacing between text and icon */
+}
+
+.blog-icon-Plagiarism,
+.blog-Unique-icon {
+  width: 24px; /* Adjust the icon size as needed */
+  height: 24px; /* Adjust the icon size as needed */
+}
+
+/* rounded container css */
+.blog-red-container,
+.blog-round-unique-container {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-top: 20px;
+    position: relative; /* Ensure child content is positioned relative to this container */
+}
+
+.blog-red-container::after,
+.blog-round-unique-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0); /* Transparent background initially */
+    border: 8px solid; /* Border width */
+    border-color: #f00; /* Red border color for 3% container */
+    box-sizing: border-box;
+}
+
+.blog-round-unique-container::after {
+    border-color: #0f0; /* Green border color for 97% container */
+    
+  
+}
+
+.blog-CircularProgressbar-text {
+    font-size: 18px;
+    color: #000; /* Text color */
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the text inside the circle */
+    z-index: 10; /* Ensure text is above the border */
+    
+}
+/* blog match source */
+.blog-match-source {
+  color: black;
+  font-size: 20px;
+  padding: 10px;
+  position: absolute;
+  left: -20px; /* Adjust as needed */
+  margin-top: -350px;
+  margin-left: 980px;
+}
+.blog-similar-words {
+  border: 2px solid pink;
+  padding: 10px;
+  margin-left: 650px;
+  background-color: pink;
+  margin-top: -270px;
+}
+.blog-similar-words-title {
+  color: black;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.blog-similar-words-content {
+  color: black;
+}
+.blog-h2 {
+  margin-left: 10px;
+}
+.h6-blog-h2 {
+  color: black;
+  font-size: 24px;
+}
+.article-blog {
+  margin-top: 40px;
+  position: relative;
+}
+.blog-sppiner {
+  color: black;
+  font-size: 20px;
+  margin-left: 650px;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
+/* table of blog */
+.blog-table-of-contents {
+  margin-top: -130px;
+}
+.blog-left-aligned-di-a {
+  text-align: left;
+  /* margin-bottom: 20px; Adjust as needed */
+  color: black; /* Adjust as needed */
+  font-size: 16px; /* Adjust as needed */
+  padding: 10px; /* Adjust as needed */
+  margin-left: 640px;
+  margin-top: -140px;
+}
+.blog-custom-div-image {
+  margin-bottom: 20px;
+  padding: 10px;
+  margin-left: 640px;
+}
+
+.blog-titles {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.blog-title {
+  margin-right: 30px;
+}
+
+.blog-underline-image {
+  border-bottom: 2px solid blue;
+  width: 20%; /* Full width underline */
+  margin-bottom: 10px;
+  clear: both;
+}
+
+.blog-content-image {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-right: 20px; /* Adjust as needed */
+}
+
+.blog-change-button-image {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.blog-change-button {
+  width: 500px; /* Set the desired width of the button */
+}
+.blog-ai-marketing-div-evoluction,
+.blog-ai-marketing-div-img-evoluction {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.blog-ai-marketing-div-evoluction {
+  width: 40%; /* Adjust the width as needed */
+  padding: 10px 20px; /* Adjust the padding as needed */
+  /* box-sizing: border-box; */
+  margin-top: -160px; /* Move the element up */
+}
+
+.blog-text-content-evoluction h5 {
+  font-size: 24px; /* Adjust the font size as needed */
+  margin-bottom: 10px;
+}
+
+.blog-text-content-evoluction p {
+  font-size: 16px; /* Adjust the font size as needed */
+  line-height: 1.6;
+}
+
+.blog-ai-marketing-div-img-evoluction {
+  width: 50%; /* Adjust the width as needed */
+  padding: 10px 20px; /* Adjust the padding as needed */
+  /* box-sizing: border-box; */
+  text-align: center;
+  margin-top: -300px; /* Move the element up */
+  margin-left: 170px;
+}
+
+.blog-ai-marketing-div-img-evoluction img {
+  max-width: 40%; /* Adjust the max-width to make the image smaller */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* lavrging data content */
+.blog-Leveraging-container-Campaigns {
+  padding: 10px 20px; /* Adjust padding as needed */
+  margin-top: 20px; /* Adjust margin-top as needed */
+}
+
+.blog-Leveraging-container-Campaigns h5 {
+  font-size: 19px; /* Adjust font size as needed */
+  margin-bottom: 10px; /* Adjust margin-bottom as needed */
+  color: black; /* Adjust text color as needed */
+}
+
+/* blog converstion */
+.blog-Campaigns-tex-conversion {
+  padding: 10px 20px; /* Adjust padding as needed */
+  margin-top: 20px; /* Adjust margin-top as needed */
+  margin-bottom: 20px; /* Adjust margin-bottom as needed */
+}
+
+.blog-Campaigns-tex-conversion p {
+  font-size: 16px; /* Adjust font size as needed */
+  line-height: 1.6; /* Adjust line height as needed */
+  color: black; /* Adjust text color as needed */
+}
+
+/* anaylsis image  */
+.blog-Analys-img-Marketing {
+  text-align: center;
+  margin-top: -310px; /* Adjust the margin-top as needed */
+  margin-bottom: 20px; /* Adjust the margin-bottom as needed */
+  margin-right: 250px;
+}
+
+.blog-Analys-img-Marketing img {
+  max-width: 100%; /* Ensure the image is responsive */
+  height: auto; /* Maintain the aspect ratio */
+  display: inline-block; /* Align the image properly */
+}
+
+/* media blog css */
+.blog-media-png {
+  margin-top: 80px; /* Adjust the margin-top as needed */
+  margin-bottom: 30px; /* Adjust the margin-bottom as needed */
+}
+
+.blog-media-png h5 {
+  font-size: 24px; /* Adjust the font size as needed */
+  margin-bottom: 10px; /* Adjust the margin as needed */
+}
+
+.blog-media-png img {
+  max-width: 45%; /* Adjust the width of the images as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0 10px; /* Add some margin between the images */
+  display: inline-block; /* Align the images properly */
+}
+
+/* blog tag a */
+.blog-tags-a {
+  display: flex;
+  flex-wrap: wrap; /* Allows tags to wrap to the next line if necessary */
+  align-items: flex-start; /* Align items to the start of the flex container */
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.blog-tags-a h5 {
+  width: 100%; /* Make the heading span the full width */
+  margin-bottom: 10px;
+  font-size: 17px;
+  display: block;
+}
+
+.blog-tag {
+  display: flex;
+  align-items: center;
+  margin-right: 20px; /* Adjust the margin between tags */
+  font-size: 18px;
+  color: black; /* Adjust the color as needed */
+  padding: 5px 10px; /* Add padding for better appearance */
+}
+
+.blog-tag img {
+  margin-left: 10px; /* Adjust the margin between text and image */
+  width: 30px; /* Set a fixed width for the images */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.blog-tag p {
+  margin: 0; /* Remove default margin for paragraph */
+  font-size: 14px;
+}
+
+/* New wrapper class to force a line break before Business automation */
+.blog-tag-wrapper {
+  flex-basis: 100%; /* Forces the following content to a new line */
+}
+/* social media */
+.blog-Social-Media-a {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.blog-Social-Media-a h5 {
+  font-size: 24px; /* Adjust the font size as needed */
+  margin-bottom: 10px;
+}
+
+.blog-icons-b {
+  display: flex;
+  justify-content: flex-start; /* Align the icons to the left */
+}
+
+.blog-icons-b a {
+  margin-right: 15px; /* Adjust the margin between icons */
+  font-size: 24px; /* Adjust the font size of the icons */
+  color: blue; /* Adjust the color of the icons */
+  text-decoration: none; /* Remove underline from the links */
+}
+
+.blog-icons-b a:hover {
+  color: #007bff; /* Adjust the hover color of the icons */
+}
+
+/* social media rahul */
+.blog-contact-details-d {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.blog-contact-image {
+  flex: 0 0 150px; /* Fixed width for the image container */
+  margin-right: 800px; /* Space between image and contact info */
+}
+
+.blog-contact-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%; /* Optional: make the image circular */
+}
+
+.blog-contact-info-abc {
+  flex: 1;
+}
+
+.blog-contact-info-abc h5 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.blog-contact-info-abc p {
+  margin: 5px 0;
+}
+
+.blog-contact-info-abc a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.blog-contact-info-abc a:hover {
+  text-decoration: underline;
+}
+
+.blog-social-icons {
+  margin-top: 10px;
+}
+
+.blog-social-icons a {
+  margin-right: 10px;
+  font-size: 20px;
+  color: #000;
+  text-decoration: none;
+}
+
+.blog-social-icons a:hover {
+  color: #007bff;
+}
+
+/* list of ai */
+.blog-custom-ai-div-details {
+  margin-left: 10px;
+  margin-top: 30px;
+  padding: 10px;
+  max-width: 900px; /* Adjust the max width as needed */
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+  gap: 30px; /* Increase the gap between fields */
+}
+
+.blog-custom-field-set-a {
+  display: flex;
+  flex-wrap: nowrap; /* Ensure fields stay on the same line */
+  align-items: center; /* Align items vertically in the center */
+  gap: 150px; /* Increase the gap between fields */
+}
+
+.blog-custom-field-z {
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+  gap: 10px; /* Adjust gap between checkbox and label */
+}
+
+.blog-custom-field-z input[type="checkbox"] {
+  width: 20px; /* Adjust checkbox width */
+  height: 20px; /* Adjust checkbox height */
+  margin-right: 10px; /* Adjust spacing between checkbox and label */
+}
+
+.blog-custom-field-z label {
+  font-size: 18px; /* Adjust label font size */
+}
+
+.blog-custom-field-s {
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+  gap: 10px; /* Adjust gap between label and edit icon */
+}
+
+.blog-custom-field-s label {
+  font-size: 18px; /* Adjust label font size */
+}
+
+.custom-field img {
+  width: 24px; /* Adjust image width */
+  height: 24px; /* Adjust image height */
+  margin-left: 5px; /* Adjust spacing between image and text */
+}
+
+.blog-custom-field-v img,
+.blog-custom-field-n img {
+  width: 24px; /* Adjust spinner image width */
+  height: 24px; /* Adjust spinner image height */
+}
+
+/* Media query adjustments for better responsiveness */
+@media (max-width: 768px) {
+  .blog-custom-ai-div-details {
+    margin-left: 0; /* Reset margin for smaller screens */
+    width: 100%; /* Full width for smaller screens */
+    flex-wrap: wrap; /* Allow fields to wrap */
+  }
+
+  .blog-custom-field-set-a {
+    flex-wrap: wrap; /* Ensure fields wrap on smaller screens */
+  }
+
+  .blog-custom-field-z,
+  .blog-custom-field-s,
+  .blog-custom-field-n,
+  .custom-field,
+  .blog-custom-field-v {
+    flex: 1 1 100%; /* Full width for each field on smaller screens */
+    margin-bottom: 20px; /* Adjust vertical spacing */
+  }
+
+  .blog-custom-field-z label,
+  .blog-custom-field-s label {
+    font-size: 16px; /* Adjust label font size */
+  }
+
+  .custom-field img {
+    margin-left: 5px; /* Adjust spacing between image and text */
+  }
+}

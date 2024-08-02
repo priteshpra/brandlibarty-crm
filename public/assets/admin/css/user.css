@@ -1,0 +1,85 @@
+/* Table Container with rounded corners */
+.table-responsive {
+  border-radius: 10px;
+  /* Rounded corners for the container */
+  overflow: hidden;
+  /* Ensure rounded corners are visible */
+}
+
+/* Table with rounded corners */
+.table {
+  border-radius: 10px;
+  /* Rounded corners for the table */
+  overflow: hidden;
+  /* Ensure rounded corners are visible */
+}
+
+/* Table Headers */
+.table thead th {
+  /* background: linear-gradient(
+    to bottom,
+    #f74a7f,
+    #972cd0
+  );  */
+  background-color: #9896f1;
+  color: white;
+  /* Text color for headers */
+}
+
+/* Table Cells */
+/* .table tbody td { 
+   color: white; 
+} */
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(to bottom,
+      #f74a7f,
+      #972cd0);
+  background-color: #9896f1;
+  /* color: white; Text color */
+  border: none;
+  /* Remove border */
+}
+
+.btn-primary:hover {
+  background-color: #9896f1;
+}
+
+.btn-secondary {
+  background-color: #9896f1;
+  /* color: white; Text color */
+  border: none;
+  /* Remove border */
+}
+
+.btn-secondary:hover {
+  background-color: #9896f1;
+}
+
+.btn-danger {
+  background-color: #9896f1;
+  /* color: white; Text color */
+  border: none;
+  /* Remove border */
+}
+
+.btn-danger:hover {
+  background: linear-gradient(to bottom,
+      #972cd0,
+      #f74a7f);
+  /* Darker hover gradient */
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox-group label {
+  margin-right: 10px;
+}

@@ -1,0 +1,70 @@
+.volume-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px; /* Rounded corners */
+    /* color: white; Text color */
+    width: 100px; /* Set a fixed width */
+    margin: 180px auto; /* Center the container horizontally */
+    margin-left: 5px;
+}
+
+.volume-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.volume-value {
+    font-size: 24px;
+    font-weight: bold;
+}
+.keyword-difficulty-container {
+    padding: 20px;
+    width: 300px; /* Set a fixed width */
+    margin: 20px auto; /* Center the container horizontally */
+    margin-left: -40px;
+    margin-top: -180px;
+}
+
+.keyword-header {
+    text-align: center; /* Center-align the text */
+    margin-bottom: 10px;
+}
+
+.keyword-title {
+    font-size: 24px; /* Larger font size for Keyword Difficulty */
+    font-weight: bold;
+}
+
+.keyword-percentage {
+    margin-left: 30px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+
+.keyword-difficulty-label {
+    margin-right: 10px; /* Space between text and orange box */
+    font-size: 24px;
+    margin-left: 30px;
+    
+}
+
+.orange-box {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%; /* Rounded box */
+    background-color: orange; /* Orange background */
+    margin-left: 130px;
+    margin-top: -80px;
+}
+
+.keyword-description {
+    font-size: 14px;
+    text-align: center; /* Center-align the text */
+    margin-top: 20px; /* Space above the description */
+}

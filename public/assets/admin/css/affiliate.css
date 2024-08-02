@@ -1,0 +1,158 @@
+/* Table Container with rounded corners */
+.table-responsive {
+    border-radius: 10px; /* Rounded corners for the container */
+    overflow: hidden; /* Ensure rounded corners are visible */
+}
+
+/* Table with rounded corners */
+.table {
+    border-radius: 10px; /* Rounded corners for the table */
+    overflow: hidden; /* Ensure rounded corners are visible */
+}
+
+/* Table Headers */ 
+.table thead th {
+    /* background: linear-gradient(to bottom, #F74A7F, #972CD0); Linear gradient for headers */
+    color: white; /* Text color for headers */
+    background-color: #9896f1;
+}
+
+/* Table Cells */
+
+/* Buttons */ 
+.btn-primary {
+    background: linear-gradient(to bottom, #F74A7F, #972CD0); /* Linear gradient */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+}
+
+.btn-primary:hover {
+    background: linear-gradient(to bottom, #972CD0, #F74A7F); /* Darker hover gradient */
+}
+
+.btn-secondary {
+    background: linear-gradient(to bottom, #F74A7F, #972CD0); /* Linear gradient */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(to bottom, #972CD0, #F74A7F); /* Darker hover gradient */
+}
+
+.btn-danger {
+    background: linear-gradient(to bottom, #F74A7F, #972CD0); /* Linear gradient */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+}
+
+.btn-danger:hover {
+    background: linear-gradient(to bottom, #972CD0, #F74A7F); /* Darker hover gradient */
+}
+
+/* Actual button start here */
+.add-button-container {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.add-button {
+    border-radius: 5px;
+    padding: 10px 20px;
+    /* background: linear-gradient(to bottom, #F74A7F, #972CD0); */
+    background-color: #9896f1;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.modal-header {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.modal-body {
+    padding: 20px 0;
+}
+
+.modal-body input[type="text"] {
+    width: 95%;
+    padding: 8px;
+    margin: 5px 0 15px;
+    display: block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.modal-footer {
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+}
+
+.modal-footer button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #9896f1;
+    color: white; /* Ensure text color is set */
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    margin: 10px 0 0 10px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-footer button:hover {
+    background-color: #7e7cc7; /* Darker hover effect */
+}
+
+.close {
+    color: #aaa;
+    float: left; /* Position on the left */
+    font-size: 28px;
+    font-weight: bold; 
+    margin-right: 10px; /* Adjust margin to separate from the header */
+}
+
+.close:hover,
+.close:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.action-btn.edit i {
+    color: #4CAF50; /* Green color for edit icon */
+}
+
+.action-btn.delete i {
+    color: #F44336; /* Red color for delete icon */
+}

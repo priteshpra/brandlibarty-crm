@@ -1,0 +1,174 @@
+.custom-button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px; /* Buttons ke beech ka gap */
+    margin-top: 20px; /* Buttons aur page ke content ke beech ka gap */
+    margin-right: 60px; /* Buttons ko left side ko shift karne ke liye */
+}
+
+.custom-button-container button {
+    padding: 10px 20px;
+    cursor: pointer;
+    /* background: linear-gradient(to bottom, #F74A7F, #972CD0); Linear gradient */
+    background-color: #899bbd;;
+    color: white;
+    border: none;
+    border-radius: 3px; 
+    font-size: 16px;
+    transition: background-color 0.3s ease; 
+}
+
+.custom-button-container button:hover {
+    background-color: #9896f1;
+}
+
+/* Table CSS */
+.table-container {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin-top: 20px;
+    border-radius: 10px; /* Table ke corners ko rounded karne ke liye */
+    overflow: hidden; /* Ensure rounded corners are visible */
+}
+
+th, td {
+    padding: 12px 15px; 
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    /* background: linear-gradient(to bottom, #F74A7F, #972CD0); Linear gradient */
+    background-color: #9896f1;
+    color: white; /* Header text color */
+}
+
+td.api-key, td.billing-link, td.notification {
+    width: 20%; /* Allocate more space to these columns */
+}
+
+td.api-title, td.action {
+    width: 10%;
+}
+
+/* Button icons */
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.action-btn.edit {
+    color: #4CAF50;
+}
+
+.action-btn.trash {
+    color: #F44336;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-header h2 {
+    margin: 0;
+    order: 1; /* Order to align on left */
+}
+
+.modal-header .close {
+    color: #aaa;
+    font-size: 28px;
+    cursor: pointer;
+    order: 2; /* Order to align on right */
+}
+
+.modal-body {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.modal-body input[type="text"] {
+    width: 95%;
+    padding: 8px;
+    margin: 5px 0 15px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.modal-footer {
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+    text-align: right;
+}
+
+.modal-footer button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: rgb(198, 43, 43);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    margin: 10px 0 0 10px;
+    transition: background-color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+    background: linear-gradient(to bottom, #972CD0, #F74A7F);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.edit-btn {
+    color: #4CAF50;
+}
+
+.delete-btn {
+    color: red;
+}
+
+#actionButton {
+    background-color: green;
+}
