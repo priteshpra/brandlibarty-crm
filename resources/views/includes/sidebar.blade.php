@@ -38,7 +38,7 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-
+            @can('project_access')
             <li>
                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                     <i class="fas fa-project-diagram"></i>
@@ -51,6 +51,7 @@
                     </li>
                 </ul>
             </li>
+            @endcan
 
             <li>
                 <a href="{{ URL('/calendar') }}" class="waves-effect">
@@ -58,7 +59,7 @@
                     <span>Calendar</span>
                 </a>
             </li>
-
+            @can('keyword_access')
             <li>
                 <a href="#" class="has-arrow waves-effect">
                     <i class="uil uil-search"></i>
@@ -66,22 +67,29 @@
                 </a>
                 <ul class="sub-menu" aria-expanded="false">
                     <li><a href="{{ url('/moz') }}">Keyword Search</a></li>
-                    <li><a href="{{ url('/chat') }}">Open AI Chat</a></li>
+                    <!-- <li><a href="{{ url('/chat') }}">Open AI Chat</a></li> -->
+                    @can('AI_access')
+                    <li><a href="{{ url('/openai-response') }}">Open AI Chat</a></li>
+                    <li><a href="{{ url('/generate-freepik') }}">Text To Image</a></li>
+                    @endcan
                     <!-- <li><a href="{{ url('/scheduling') }}">Scheduling</a></li> -->
                 </ul>
             </li>
-
+            @endcan
+            @can('Blog_access')
             <li>
                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                     <i class="fas fa-pen"></i>
                     <span>Blog Writing</span>
                 </a>
                 <ul class="sub-menu" aria-expanded="false">
+                    @can('Blog_create')
                     <li><a href="{{ URL('/blog') }}">Blog Writing Page</a></li>
+                    @endcan
                     <!-- <li><a href="{{ URL('/blog/create') }}">Create Blog</a></li> -->
                 </ul>
             </li>
-
+            @endcan
             <li>
                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                     <i class="fas fa-photo-video"></i>
@@ -105,18 +113,21 @@
                     <span>SMS Configaration</span>
                 </a>
             </li>
-
+            @can('affiliate_access')
             <li>
                 <a href="{{ url('/affiliate') }}" class="waves-effect">
                     <i class="fas fa-handshake"></i>
                     <span>Affiliate</span>
                 </a>
             </li>
-
+            @endcan
             <li class="menu-title">Pages</li>
+            @can('category_access')
             <li>
                 <a href="{{ URL('/category') }}"><i class="fas fa-keyboard"></i>Category List</a>
             </li>
+            @endcan
+            @can('prompt_access')
             <li>
                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                     <i class="fas fa-keyboard"></i>
@@ -126,7 +137,7 @@
                     <li><a href="{{ url('/prompt') }}">Prompt List</a></li>
                 </ul>
             </li>
-
+            @endcan
             <li>
                 <a href="{{ url('/addblock') }}" class="waves-effect">
                     <i class="fas fa-ad"></i>
@@ -134,6 +145,7 @@
                 </a>
 
             </li>
+            @can('users_access')
             <li>
                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                     <i class="fas fa-user"></i>
@@ -144,7 +156,7 @@
 
                 </ul>
             </li>
-
+            @endcan
             <li class="menu-title">Components</li>
 
             <li>

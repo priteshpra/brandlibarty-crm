@@ -1,7 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-
+<style>
+    .badge.badge-info {
+        color: #000;
+    }
+</style>
 <div class="card">
     <div class="card-header">{{ __('View Role') }}</div>
 
@@ -10,9 +14,6 @@
         <a href="{{ route('roles.index') }}" class="btn btn-light">Back to List</a>
 
         <br /><br />
-
-
-
         <table class="table table-borderless">
 
             <tr>

@@ -43,14 +43,11 @@ class ApiController extends Controller
     {
 
         try {
-            $findCode = Blog::where('status', $request->code)->where('projectName', $request->domain)->get();
+            $findCode = Blog::where('status', '1')->where('is_send', '1')->get();
             if (count($findCode) > 0) {
-                $Project = Project::find($findCode[0]['id']);
-                $Project->isConnected = 1;
-                $Project->save();
-                return response()->json(array('status' => 200, 'message' => 'Connect Sucessfully'), 200);
+                return response()->json(array('status' => 200, 'message' => 'Blog data Sucessfully', 'data' => $findCode), 200);
             } else {
-                return response()->json(array('status' => 200, 'message' => 'domain not found, please try another.'), 200);
+                return response()->json(array('status' => 200, 'message' => 'No blog data.', 'data' => []), 200);
             }
         } catch (\Exception $e) {
             return response()->json(array('status' => 400, 'message' => 'Something went wrong'), 200);

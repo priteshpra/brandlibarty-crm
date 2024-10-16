@@ -45,8 +45,6 @@
                     b = a.replace("**", '<b>');
                     b.replace("**", '</b>')
                     a = b.replace("**", '</b>');
-
-
                 }
                 $('#chat-messages').append('<div><strong>You:</strong> ' + message + '</div>');
                 $('#chat-messages').append('<div><strong>ChatGPT:</strong> ' + a + '</div>');

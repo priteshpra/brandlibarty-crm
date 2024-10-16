@@ -128,4 +128,26 @@ class PromptController extends Controller
         $users = Prompt::find($promptID);
         return $users;
     }
+
+    public function getPromptDataByName(Request $request)
+    {
+        $promptName = $request->input('promptName');
+        $keywordTitle = $request->input('keywordTitle');
+        $promptLang = $request->input('promptLang');
+        $promptActAs = $request->input('promptActAs');
+
+        $arrData = $request->input('arrData');
+        $noOfPrompt = explode('<br>', $arrData);
+        $finalDesc = [];
+        if ($noOfPrompt) {
+            $users = Prompt::where('prompt', $promptName)->get();
+            $desc = isset($users[0]) ? $users[0]->description : '';
+            foreach ($noOfPrompt as $key => $value) {
+                $finalDesc0 = str_replace('[Keyword]', $keywordTitle, $desc);
+                $finalDesc1 = str_replace('[Expert/Professional/Enthusiast/Journalist]', $promptActAs, $finalDesc0);
+                $finalDesc[] = str_replace('[English/Spanish/French/etc.]', $promptLang, $finalDesc1);
+            }
+        }
+        return $finalDesc;
+    }
 }

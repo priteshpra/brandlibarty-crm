@@ -70,9 +70,12 @@
         </form>
     </div>
 </div>
+<link rel="stylesheet" href="{{ asset('admin_assets/plugins/slim-select/slimselect.min.css') }}">
+<script src="{{ asset('admin_assets/plugins/jquery/dist/jquery.min.js') }}"></script>
+<!-- slim-select -->
+<script src="{{ asset('admin_assets/plugins/slim-select/slimselect.min.js') }}"></script>
 
-@endsection
-@section('scripts')
+
 <script>
     var permission_select = new SlimSelect({
         select: '#permissions-select select',

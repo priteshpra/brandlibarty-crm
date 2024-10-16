@@ -8,31 +8,34 @@
 </head>
 
 <body>
+    <div class="page-wrapper" style="min-height:100vh;">
+        <div class="container-fluid">
+            <!-- Main Wrapper -->
+            <div class="layout-wrapper">
 
-    <!-- Main Wrapper -->
-    <div class="layout-wrapper">
+                <!-- Header -->
+                <header id="page-topbar">
 
-        <!-- Header -->
-        <header id="page-topbar">
+                    @include('includes.header')
+                    <!-- /Header Menu -->
+                </header>
+                <!-- /Header -->
 
-            @include('includes.header')
-            <!-- /Header Menu -->
-        </header>
-        <!-- /Header -->
+                <!-- Sidebar -->
+                <div class="vertical-menu">
+                    @include('includes.sidebar')
+                </div>
+                <!-- /Sidebar -->
 
-        <!-- Sidebar -->
-        <div class="vertical-menu">
-            @include('includes.sidebar')
+                <!-- Page Wrapper -->
+                <div class="main-content">
+                    <div id="loading"></div>
+                    @yield('content')
+                </div>
+                <!-- /Main Wrapper -->
+                @include('includes.footer')
+            </div>
         </div>
-        <!-- /Sidebar -->
-
-        <!-- Page Wrapper -->
-        <div class="main-content">
-            <div id="loading"></div>
-            @yield('content')
-        </div>
-        <!-- /Main Wrapper -->
-        @include('includes.footer')
 </body>
 
 </html>

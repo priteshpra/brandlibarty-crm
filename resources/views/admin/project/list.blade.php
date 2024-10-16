@@ -124,6 +124,22 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script>
     $(document).ready(function() {
+        $("#projectName").on('keypress', function() {
+            var the_domain = $(this).val();
+
+            // strip off "http://" and/or "www."
+            the_domain = the_domain.replace("http://", "");
+            the_domain = the_domain.replace("www.", "");
+
+            var reg = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/;
+            if (reg.test(the_domain) == false) {
+
+                $('#projectName').focus();
+                $('#projectName').addClass('error');
+            } else {
+                $('#projectName').removeClass('error');
+            }
+        });
         // Function to generate activation code
         const form = document.getElementById('addProjectForm');
 
@@ -193,6 +209,19 @@
             } else {
                 // Add new project if not in edit mode
                 isValid = true;
+                var the_domain = $('#projectName').val();
+
+                // strip off "http://" and/or "www."
+                the_domain = the_domain.replace("http://", "");
+                the_domain = the_domain.replace("www.", "");
+
+                var reg = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/;
+                if (reg.test(the_domain) == false) {
+                    isValid = false;
+                    $('#projectName').focus();
+                    $('#projectName').addClass('error');
+                }
+
                 if ($('#projectName').val() == '' || $('#projectName').val() == null) {
                     isValid = false;
                     $('#projectName').addClass('error');

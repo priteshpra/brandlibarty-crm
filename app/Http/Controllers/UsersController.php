@@ -56,7 +56,7 @@ class UsersController extends Controller
             $User->name = $request->FirstName;
             $User->email = $request->EmailID;
             $User->role = $request->RoleID;
-            $User->password = Hash::make($request->password);
+            $User->password = Hash::make('123456');
             $User->created_at = date('Y-m-d H:i:s');
             $User->save();
             $lastInsertId = $User->id;
@@ -70,7 +70,7 @@ class UsersController extends Controller
             $Prompt->City = $request->City;
             $Prompt->State = $request->State;
             $Prompt->RoleID = $request->RoleID;
-            $Prompt->password = Hash::make($request->password);
+            $Prompt->password = Hash::make('123456');
             $Prompt->createdBy = $ModifiedBy;
             $Prompt->save();
 
@@ -101,6 +101,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, Customers $user)
     {
+        // dd($user);
         $request->validate([
             'FirstName' => 'required',
             'LastName' => 'required',
@@ -111,16 +112,25 @@ class UsersController extends Controller
             'RoleID' => 'required',
         ]);
         try {
-            $Prompt = Customers::find($user->id);
-            $Prompt->FirstName = $request->FirstName;
-            $Prompt->LastName = $request->LastName;
-            $Prompt->EmailID = $request->EmailID;
-            $Prompt->MobileNo = $request->MobileNo;
-            $Prompt->City = $request->City;
-            $Prompt->State = $request->State;
-            $Prompt->RoleID = $request->RoleID;
-            $Prompt->save();
-            return redirect()->route('User.index')->with('success', 'User updated successfully.');
+            $Prompt = Customers::where('userID', $user->Id)->update([
+                'FirstName' => $request->FirstName,
+                'LastName' => $request->LastName,
+                'EmailID' => $request->EmailID,
+                'MobileNo' => $request->MobileNo,
+                'City' => $request->City,
+                'State' => $request->State,
+                'RoleID' => $request->RoleID,
+            ]);
+            // dd($Prompt);
+            // $Prompt->FirstName = $request->FirstName;
+            // $Prompt->LastName = $request->LastName;
+            // $Prompt->EmailID = $request->EmailID;
+            // $Prompt->MobileNo = $request->MobileNo;
+            // $Prompt->City = $request->City;
+            // $Prompt->State = $request->State;
+            // $Prompt->RoleID = $request->RoleID;
+            // $Prompt->save();
+            return redirect()->route('users.index')->with('success', 'User updated successfully.');
         } catch (\Exception $e) {
             echo $e->getMessage();
         }

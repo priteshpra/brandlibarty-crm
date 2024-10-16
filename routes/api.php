@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('/connect', [ApiController::class, 'connectPrject']);
+Route::post('/getBlogs', [ApiController::class, 'getBlogs']);

@@ -75,5 +75,32 @@
         </form>
     </div>
 </div>
+<link rel="stylesheet" href="{{ asset('admin_assets/plugins/slim-select/slimselect.min.css') }}">
+<script src="{{ asset('admin_assets/plugins/jquery/dist/jquery.min.js') }}"></script>
+<!-- slim-select -->
+<script src="{{ asset('admin_assets/plugins/slim-select/slimselect.min.js') }}"></script>
 
+
+<script>
+    var permission_select = new SlimSelect({
+        select: '#permissions-select select',
+        //showSearch: false,
+        placeholder: 'Select Permissions',
+        deselectLabel: '<span>&times;</span>',
+        hideSelectedOption: true,
+    })
+
+    $('#permissions-select #permission-select-all').click(function() {
+        var options = [];
+        $('#permissions-select select option').each(function() {
+            options.push($(this).attr('value'));
+        });
+
+        permission_select.set(options);
+    })
+
+    $('#permissions-select #permission-deselect-all').click(function() {
+        permission_select.set([]);
+    })
+</script>
 @endsection

@@ -25,15 +25,6 @@ class ChatGPTController extends Controller
     public function generate(Request $request)
     {
 
-        // $response = Http::withHeaders([
-        //     'Authorization' => 'Bearer ' . $this->openaiApiKey,
-        //     'Content-Type' => 'application/json',
-        // ])->post('https://api.openai.com/v1/chat/completions', [
-        //     'messages' => ["role"=> "user","content"=>$request->input('message')],
-        //     "model" => "gpt-3.5-turbo", // gpt-3.5-turbo-16k
-        //     'max_tokens' => 150,
-        // ]);
-
         $client = new Client();
         $url = 'https://api.openai.com/v1/chat/completions';
         $headers = [
@@ -54,7 +45,47 @@ class ChatGPTController extends Controller
         ]);
         $result = json_decode($response->getBody()->getContents(), true);
         return response()->json($result['choices'][0]['message']['content']);
+    }
 
-        // return $response->json();
+    public function generate2(Request $request)
+    {
+        $total = count($request->input('message'));
+        for ($i = 0; $i < $total; $i++) {
+            // dd($request->input('message')[$i]);
+            $response = Http::withHeaders([
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Bearer ' . $this->openaiApiKey,
+            ])->post("https://api.openai.com/v1/chat/completions", [
+                "model" => "gpt-3.5-turbo",
+                'messages' => [
+                    [
+                        "role" => "system",
+                        "content" => "You are a helpful assistant."
+                    ],
+                    [
+                        "role" => "user",
+                        "content" => $request->input('message')[$i]
+                    ],
+                    [
+                        "role" => "assistant",
+                        "content" => "The Los Angeles Dodgers won the World Series in 2020."
+                    ],
+                    [
+                        "role" => "user",
+                        "content" => $request->input('message')[$i]
+                    ],
+                ],
+                'temperature' => 1.0,
+                'max_tokens' => 4000,
+                'frequency_penalty' => 0,
+                'presence_penalty' => 0,
+            ])->json();
+            $updatedContent = preg_replace('/\*\*(.*?)\*\*/', '<h2 class="imageGet text">$1</h2>', $response['choices'][0]['message']['content']);
+            $updatedContent2 = preg_replace('/\*(.*?)\*/', '<h4>$1</h4>', $updatedContent);
+            $generatedText0 = $updatedContent2;
+            $generatedText[] = $generatedText0;
+        }
+
+        return $generatedText;
     }
 }

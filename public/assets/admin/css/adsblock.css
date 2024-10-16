@@ -1,0 +1,51 @@
+.container {
+    text-align: center;
+    width: 800px;
+    margin: 0 auto; /* Center the container horizontally */
+    margin-top: -70px; /* Adjust top margin as needed */
+}
+
+.table th {
+    background-color: #9896f1;
+    color: white;
+}
+.upload-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed;
+    /* left: 20px; Adjust this value to position the button */
+    /* top: 20px; Adjust this value to position the button */
+    display: flex;
+    align-items: center;
+    margin-top: 400px;
+}
+
+.upload-button .icon {
+    margin-right: 10px;
+    font-size: 24px; /* Adjust icon size */
+}
+
+.right-bottom-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed;
+    right: 20px; /* Position the button to the right */
+    /* bottom: 10px; Position the button to the bottom */
+    margin-top: 400px;
+    display: flex;
+    align-items: center;
+}
+
+.right-bottom-button .fas {
+    margin-right: 10px; /* Adjust margin as needed */
+}

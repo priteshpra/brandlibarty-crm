@@ -28,7 +28,7 @@
                             <div id="total-revenue-chart" data-colors='["--bs-primary"]'></div>
                         </div>
                         <div>
-                            <h4 class="mb-1 mt-1"><span data-plugin="counterup">0</span></h4>
+                            <h4 class="mb-1 mt-1"><span data-plugin="counterup">{{$domain}}</span></h4>
                             <p class="text-muted mb-0">Total Domain</p>
                         </div>
                         <p class="text-muted mt-3 mb-0"><span class="text-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>0</span> Since Last Week
@@ -60,7 +60,7 @@
                             <div id="customers-chart" data-colors='["--bs-primary"]'> </div>
                         </div>
                         <div>
-                            <h4 class="mb-1 mt-1"><span data-plugin="counterup">0</span></h4>
+                            <h4 class="mb-1 mt-1"><span data-plugin="counterup">{{$user}}</span></h4>
                             <p class="text-muted mb-0">Total User</p>
                         </div>
                         <p class="text-muted mt-3 mb-0"><span class="text-danger me-1"><i class="mdi mdi-arrow-down-bold me-1"></i>0</span> Since Sast Week
@@ -77,7 +77,7 @@
                             <div id="growth-chart" data-colors='["--bs-warning"]'></div>
                         </div>
                         <div>
-                            <h4 class="mb-1 mt-1">+ <span data-plugin="counterup">0</span></h4>
+                            <h4 class="mb-1 mt-1">+ <span data-plugin="counterup">{{$blogs}}</span></h4>
                             <p class="text-muted mb-0">Total Blog's</p>
                         </div>
                         <p class="text-muted mt-3 mb-0"><span class="text-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>0</span> Since Last Week
@@ -251,69 +251,18 @@
                             <div class="table-responsive">
                                 <table class="table table-borderless table-centered table-nowrap">
                                     <tbody>
-                                        <tr>
-                                            <td style="width: 20px;"><img src="{{ asset('assets/admin/images/users/images.jfif') }}" class=" avatar-xs rounded-circle " alt=" ..."></td>
-                                            <td>
-                                                <h6 class="font-size-15 mb-1 fw-normal">Fashion</h6>
-                                                <!-- <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i> Nevada</p> -->
-                                            </td>
-                                            <!-- <td><span class="badge bg-danger-subtle text-danger font-size-12">Cancel</span></td> -->
-                                            <td class="text-muted fw-semibold text-end"><i class="icon-xs icon me-2 text-success" data-feather="trending-up"></i>0</td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="{{ asset('assets/admin/images/users/depositphotos_139809276-stock-photo-consumer-and-home-electronics.jpg') }}" class="avatar-xs rounded-circle " alt="..."></td>
-                                            <td>
-                                                <h6 class="font-size-15 mb-1 fw-normal">Electronics</h6>
-                                                <!-- <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i> Texas</p> -->
-                                            </td>
-                                            <!-- <td><span class="badge bg-success-subtle text-success font-size-12">Success</span></td> -->
-                                            <td class="text-muted fw-semibold text-end"><i class="icon-xs icon me-2 text-danger" data-feather="trending-down"></i>0</td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="{{ asset('assets/admin/images/users/download.jfif') }}" class=" avatar-xs rounded-circle " alt=" ..."></td>
-                                            <td>
-                                                <h6 class="font-size-15 mb-1 fw-normal">Home & Appliances</h6>
-                                                <!-- <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i> California</p> -->
-                                            </td>
-                                            <!-- <td><span class="badge bg-info-subtle text-info font-size-12">Active</span></td> -->
-                                            <td class="text-muted fw-semibold text-end"><i class="icon-xs icon me-2 text-success" data-feather="trending-up"></i>0</td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="{{ asset('assets/admin/images/users/depositphotos_55072853-stock-photo-time-to-travel-wooden-sign.jpg') }}" class="avatar-xs rounded-circle " alt="..."></td>
-                                            <td>
-                                                <h6 class="font-size-15 mb-1 fw-normal">Travel</h6>
-                                                <!-- <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i> Montana</p> -->
-                                            </td>
-                                            <!-- <td><span class="badge bg-warning-subtle text-warning font-size-12">Pending</span></td> -->
-                                            <td class="text-muted fw-semibold text-end"><i class="icon-xs icon me-2 text-danger" data-feather="trending-down"></i>0</td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="{{ asset('assets/admin/images/users/istockphoto-1069933778-612x612.jpg') }}" class="avatar-xs rounded-circle " alt="..."></td>
-                                            <td>
-                                                <h6 class="font-size-15 mb-1 fw-normal">Kids Product</h6>
-                                                <!-- <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i> Colorado</p> -->
-                                            </td>
-                                            <!-- <td><span class="badge bg-info-subtle text-info font-size-12">Active</span></td> -->
-                                            <td class="text-muted fw-semibold text-end"><i class="icon-xs icon me-2 text-success" data-feather="trending-up"></i>0</td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="{{ asset('assets/admin/images/users/download (1)jfif') }}" class="avatar-xs rounded-circle " alt="..."></td>
-                                            <td>
-                                                <h6 class="font-size-15 mb-1 fw-normal">Beauty</h6>
-                                                <!-- <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i> Australia</p> -->
-                                            </td>
-                                            <!-- <td><span class="badge bg-success-subtle text-success font-size-12">Success</span></td> -->
-                                            <td class="text-muted fw-semibold text-end"><i class="icon-xs icon me-2 text-danger" data-feather="trending-down"></i>0</td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="{{ asset('assets/admin/images/users/images (1).jfif') }}" class="avatar-xs rounded-circle " alt="..."></td>
-                                            <td>
-                                                <h6 class="font-size-15 mb-1 fw-normal">Furniture</h6>
-                                                <!-- <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i> India</p> -->
-                                            </td>
-                                            <!-- <td><span class="badge bg-danger-subtle text-danger font-size-12">Cancel</span></td> -->
-                                            <td class="text-muted fw-semibold text-end"><i class="icon-xs icon me-2 text-success" data-feather="trending-up"></i>0</td>
-                                        </tr>
+                                        <?php if ($categoryList) {
+                                            foreach ($categoryList as $key => $value) { ?>
+                                                <tr>
+                                                    <td style="width: 20px;"><img src="{{ asset('assets/admin/images/users/avatar-5.jpg') }}" class=" avatar-xs rounded-circle " alt=" ..."></td>
+                                                    <td>
+                                                        <h6 class="font-size-15 mb-1 fw-normal">{{ $value->categoryName}}</h6>
+                                                    </td>
+                                                    <!-- <td class="text-muted fw-semibold text-end"><i class="icon-xs icon me-2 text-success" data-feather="trending-up"></i>0</td> -->
+                                                </tr>
+                                        <?php }
+                                        } ?>
+
                                     </tbody>
                                 </table>
                             </div> <!-- enbd table-responsive-->

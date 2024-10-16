@@ -139,7 +139,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="act_as" class="form-label">Act As</label>
-                            <input type="text" class="form-control" id="act_as" name="act_as" placeholder="e.g. Creator">
+                            <input type="text" class="form-control txtOnly" id="act_as" name="act_as" placeholder="e.g. Creator">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Character</label>
@@ -262,6 +262,13 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script>
     $(document).ready(function() {
+        $(".txtOnly").keypress(function(e) {
+            var key = e.keyCode;
+            if (key >= 48 && key <= 57) {
+                e.preventDefault();
+            }
+        });
+
         $('body').on('click', '.edit-btn', function() {
             var prId = $(this).attr("data-id");
             $.ajax({

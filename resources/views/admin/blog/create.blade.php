@@ -3,9 +3,7 @@
 <link rel="stylesheet" href="{{ asset('assets/admin/css/create blog') }}">
 
 <div class="page-content">
-
     <!-- main div here page -->
-
     <div class="container-fluid mt-5 bg-light ">
         <div class="row">
             <div class="col-md-10">
@@ -36,7 +34,7 @@
                                     </select>
                                 </th>
                                 <th class="date-column" style="border: none;">
-                                    <input type="text" id="dateSelect" placeholder="Date" readonly style="width: 100%; background-color: #9896f1; border: none; color: white; font-weight: bold;">
+                                    <input type="text" id="dateSelect" name="dateSelect" placeholder="Date" readonly style="width: 100%; background-color: #9896f1; border: none; color: white; font-weight: bold;">
                                 </th>
                             </tr>
                         </thead>
@@ -88,6 +86,12 @@
                         <input type="hidden" name="kewordShow" id="kewordShow" value="" />
                         <input type="hidden" name="datePick" id="datePick" value="" />
                         <input type="hidden" name="keywordTitle" id="keywordTitle" value="" />
+                        <textarea style="display:none" id="contentText0" name="contentText[]"></textarea>
+                        <textarea style="display:none" id="contentText1" name="contentText[]"></textarea>
+                        <textarea style="display:none" id="contentText2" name="contentText[]"></textarea>
+                        <textarea style="display:none" id="contentText3" name="contentText[]"></textarea>
+                        <textarea style="display:none" id="contentText4" name="contentText[]"></textarea>
+                        <textarea style="display:none" id="contentText5" name="contentText[]"></textarea>
                         <div style="display: flex; justify-content: space-between; margin-top: 10px;">
                             <!-- <button onclick="createTable()" disabled id="createBtn" class="btn btn-success">Create</button> -->
                             <input onclick="createTable()" type="submit" name="submit" id="createBtn" class="btn btn-success" disabled value="Create" />
@@ -126,9 +130,63 @@
 
 <script>
     $(function() {
+        $("#PromptSelect").change(function() {
+            var prmtVal = $('option:selected', this).text();
+            var prmtArr = prmtVal.split(" - ");
+            keywordTitle = $("#keywordTitle").val();
+            console.log(prmtArr);
+            $.ajax({
+                url: 'getPromptDataByName',
+                type: 'GET',
+                async: false,
+                data: {
+                    promptName: prmtArr[0],
+                    promptLang: prmtArr[1],
+                    promptActAs: prmtArr[2],
+                    keywordTitle: keywordTitle,
+                    arrData: $("#promptLis").html(),
+                },
+                success: function(response) {
+                    if (response) {
+                        var getEditorDAta = response;
+                        $.ajax({
+                            // url: 'chat/generate',
+                            url: 'chat/generate2',
+                            type: 'POST',
+                            data: {
+                                _token: '{{ csrf_token() }}',
+                                message: getEditorDAta
+                            },
+                            beforeSend: function() {
+                                $('#createBtn').val('Please Wait...');
+                            },
+                            complete: function() {
+                                $('#createBtn').val('Create');
+                                $("#createBtn").attr('disabled', false);
+                            },
+                            success: function(response) {
+                                setTimeout(() => {
+                                    for (i = 0; i < response.length; ++i) {
+                                        messagedata = response;
+                                        $('#contentText' + i).html(messagedata[i]);
+                                    }
+                                }, 2000);
+                                console.log(' +++ ', response.length);
+                            },
+                            error: function(xhr) {
+                                console.log(xhr.responseText);
+                            }
+                        });
+                    }
+                }
+            });
+
+        });
+    });
+
+    $(function() {
         $("#categorySelect").change(function() {
             var catVal = $('option:selected', this).text();
-
             $.ajax({
                 url: 'getDomainData',
                 type: 'GET',
@@ -162,13 +220,13 @@
     });
     $(document).ready(function() {
         $('input[name="keyword"]').on("click", function() {
+            // $('#createBtn').val('Please Wait...');
             var keyName = $('input[name = "keyword"]:checked').val();
             idText = keyName.replace(/ /g, '_');
             titleName = $('#titles_' + idText).val();
             $("#kewordShow").val(keyName);
             $("#keywordTitle").val(titleName);
             $("#keyRplc").html(keyName);
-            $("#createBtn").attr('disabled', false);
         });
     });
 

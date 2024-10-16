@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Calendar;
 use App\Models\Keywords;
 use App\Models\Category;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class BlogController extends Controller
 {
@@ -18,7 +20,7 @@ class BlogController extends Controller
     {
         $titlelist = '';
         $kewordShow = '';
-        $blogList = Blog::all()->where('status', 1);
+        $blogList = Blog::all()->where('status', '=', 1)->where('is_send', '=', '0');
         return view('admin.blog.blogcompaign', compact('titlelist', 'kewordShow', 'blogList'));
     }
 
@@ -52,36 +54,51 @@ class BlogController extends Controller
         $categoryVal = $request->input('categoryVal');
         $users = Project::leftJoin('prompts', 'project.promptID', '=', 'prompts.id')
             ->select('project.*', 'prompts.prompt', 'prompts.act_as', 'prompts.language', 'prompts.act_as')
-            ->where('project.category', $categoryVal)->get()->all();
+            ->where('project.category', $categoryVal)->where('project.status', '1')->get()->all();
         return $users;
     }
 
     public function blogcreate(Request $request)
     {
-        // dd($request);
         $ModifiedBy = Auth::user()->id;
 
+        $content = $request->contentText;
         $titleName = $request->keywordTitle;
         $kewordShow = $request->kewordShow;
         $datePick = $request->datePick;
+        $date = Carbon::createFromFormat('d/m/Y', $datePick);
+        $newDate = $date->format('Y-m-d');
         $keywordlists = Keywords::all()->where('status', 1);
         $category = Category::all()->where('status', 1);
         $count = Blog::where('keywordName', $kewordShow)->first();
         if (!$count) {
-            $Blog = new Blog();
-            $Blog->blog_name = $titleName;
-            $Blog->createdBy = $ModifiedBy;
-            $Blog->keywordName = $kewordShow;
-            $Blog->blog_date = date('Y-m-d', strtotime($datePick));
-            $Blog->status = 1;
-            $Blog->save();
+
+            foreach ($content as $key => $value) {
+                if ($value) {
+                    $Blog = new Blog();
+                    $Blog->blog_name = $titleName;
+                    $Blog->createdBy = $ModifiedBy;
+                    $Blog->keywordName = $kewordShow;
+                    $Blog->content = $value;
+                    $Blog->blog_date = $newDate;
+                    $Blog->status = 1;
+                    $Blog->save();
+
+                    $Calender = new Calendar();
+                    $Calender->articleName = $titleName;
+                    $Calender->articleLink = 'https://theautomateapp.com/calendar';
+                    $Calender->articleScheduleDate = $newDate;
+                    $Calender->createdBy = 2;
+                    $Calender->save();
+                }
+            }
         }
 
         $Keywords = Keywords::where('keywordName', $kewordShow)->first();
         $Keywords->status = '0';
         $Keywords->save();
 
-        $blogList = Blog::all()->where('status', 1);
+        $blogList = Blog::all()->where('status', '=', 1)->where('is_send', '=', '0');
 
         return view('admin.blog.blogcompaign', compact('keywordlists', 'kewordShow', 'titleName', 'blogList'));
     }
@@ -121,6 +138,23 @@ class BlogController extends Controller
             $project->save();
             return redirect()->route('blog.index')
                 ->with('success', 'Blog deleted successfully');
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getBlogDisabled(Request $request)
+    {
+        try {
+            $entry = Blog::where('id', $request->ID)->update(['content' => $request->htmlData]);
+            // dd($entry);
+            $checkData = Blog::where('status', '1')->where('is_send', '0')->count();
+            Blog::where('id', $request->ID)
+                ->update(['is_send' => '1']);
+            if ($checkData == 0) {
+                return 0;
+            }
+            return 1;
         } catch (\Exception $e) {
             echo $e->getMessage();
         }

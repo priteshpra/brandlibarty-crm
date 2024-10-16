@@ -68,7 +68,7 @@
                                 @endforeach
                             </div>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label class="d-block text-center">User Permissions</label>
                             <div class="row" id="userPermissions">
                                 <div class="col-md-6">
@@ -88,7 +88,7 @@
                                     <label><input type="checkbox" value="Custom Setting"> Custom Setting</label><br>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="text-end">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-primary" id="createUserBtn">Create</button>
@@ -110,7 +110,6 @@
                     <th>State</th>
                     <th>City</th>
                     <th>User Role</th>
-                    <th>User Permission</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -124,7 +123,7 @@
                     <td>{{ $pr->State }}</td>
                     <td>{{ $pr->City }}</td>
                     <td>{{ $roles[$pr->RoleID] }}</td>
-                    <td>{{ $pr->State }}</td>
+                    <td style="display: none;">{{ $pr->Id }}</td>
                     <td>
                         <button type="button" class="btn btn-sm btn-primary edit-btn" data-id="{{ $pr->Id }}">
                             <i class="fas fa-edit"></i>
@@ -228,6 +227,10 @@
                 isValid = false;
                 $('#email').addClass('error');
             }
+            if (IsEmail(email) === false) {
+                $('#email').addClass('error');
+                isValid = false;
+            }
             if (!city) {
                 isValid = false;
                 $('#city').addClass('error');
@@ -237,10 +240,20 @@
                 $('#state, #country').addClass('error');
             }
             if (isValid) {
-                // userForm.submit();
+                userForm.submit();
                 return true;
             } else {
                 return false;
+            }
+        }
+
+        function IsEmail(email) {
+            const regex =
+                /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!regex.test(email)) {
+                return false;
+            } else {
+                return true;
             }
         }
 
@@ -309,14 +322,14 @@
         // Function to update an existing row in the user table
         function updateTableRow(row) {
             const cells = row.cells;
-            cells[0].textContent = document.getElementById('firstName').value.trim();
-            cells[1].textContent = document.getElementById('lastName').value.trim();
-            cells[2].textContent = document.getElementById('email').value.trim();
-            cells[3].textContent = document.getElementById('phoneNo').value.trim();
-            cells[4].textContent = document.getElementById('state').value.trim();
-            cells[5].textContent = document.getElementById('city').value.trim();
-            cells[6].textContent = getUserRoles().join(', ');
-            cells[7].textContent = getUserPermissions().join(', ');
+            // cells[0].textContent = document.getElementById('firstName').value.trim();
+            // cells[1].textContent = document.getElementById('lastName').value.trim();
+            // cells[2].textContent = document.getElementById('email').value.trim();
+            // cells[3].textContent = document.getElementById('phoneNo').value.trim();
+            // cells[4].textContent = document.getElementById('state').value.trim();
+            // cells[5].textContent = document.getElementById('city').value.trim();
+            // cells[6].textContent = getUserRoles().join(', ');
+            // cells[7].textContent = getUserPermissions().join(', ');
         }
 
         document.querySelectorAll('.edit-btn').forEach(button => {
@@ -344,6 +357,10 @@
                     // document.querySelector(`#userPermissions input[type="checkbox"][value="${permission}"]`).checked = true;
                 });
 
+                rowId = cells[8].textContent;
+                $("#userForm").attr('action', "{{ URl('users') }}/" + rowId + "");
+                $("#PUTMethod").insertAfter("#PUT");
+
                 document.getElementById('email').value = cells[2].textContent;
                 document.getElementById('phoneNo').value = cells[3].textContent;
                 document.getElementById('state').value = cells[4].textContent;
@@ -353,7 +370,6 @@
                 currentEditRow = row;
                 userModal.show();
             });
-
         }
 
         // Event delegation for dynamically added edit and delete buttons
