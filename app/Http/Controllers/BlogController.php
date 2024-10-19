@@ -10,9 +10,17 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Services\FreepikService;
 
 class BlogController extends Controller
 {
+    protected $freepikService;
+
+    public function __construct(FreepikService $freepikService)
+    {
+        $this->freepikService = $freepikService;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -158,5 +166,20 @@ class BlogController extends Controller
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
+    }
+
+    public function generate(Request $request)
+    {
+        $request->validate([
+            'text' => 'required|string',
+        ]);
+
+        $result = $this->freepikService->generateImageFromText($request->text);
+
+        if (isset($result['error'])) {
+            return response()->json(['error' => $result['error']], 400);
+        }
+
+        return response()->json($result);
     }
 }

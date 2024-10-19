@@ -60,7 +60,7 @@ class ChatGPTController extends Controller
                 'messages' => [
                     [
                         "role" => "system",
-                        "content" => "You are a helpful assistant."
+                        "content" => $request->input('message')[$i]
                     ],
                     [
                         "role" => "user",
@@ -68,7 +68,7 @@ class ChatGPTController extends Controller
                     ],
                     [
                         "role" => "assistant",
-                        "content" => "The Los Angeles Dodgers won the World Series in 2020."
+                        "content" => $request->input('message')[$i]
                     ],
                     [
                         "role" => "user",
@@ -80,7 +80,7 @@ class ChatGPTController extends Controller
                 'frequency_penalty' => 0,
                 'presence_penalty' => 0,
             ])->json();
-            $updatedContent = preg_replace('/\*\*(.*?)\*\*/', '<h2 class="imageGet text">$1</h2>', $response['choices'][0]['message']['content']);
+            $updatedContent = preg_replace('/\*\*(.*?)\*\*/', '<h2 class="imageGet text">$1</h2><div id="result_$1" data-id="$1"></div>', $response['choices'][0]['message']['content']);
             $updatedContent2 = preg_replace('/\*(.*?)\*/', '<h4>$1</h4>', $updatedContent);
             $generatedText0 = $updatedContent2;
             $generatedText[] = $generatedText0;

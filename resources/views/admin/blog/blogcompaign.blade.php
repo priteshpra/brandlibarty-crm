@@ -42,7 +42,7 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <div class="pritudes">
+                                <div class="">
                                     <div class="tl-spinner-dot pritude"><i class="fas fa-check" style="color: green; font-size: 20px;display:none"></i></div>
                                 </div>
                             </td>
@@ -77,7 +77,7 @@
                         </tr>
                         <tr class="expandable-row" id="show_<?php echo $value->id ?>" data-id="<?php echo $value->id ?>" style="display: none;">
                             <td colspan="8 ">
-                                <div style="width:65%;float: left;">
+                                <div style="width:100%;">
                                     <div class="self-stretch rounded-t-none rounded-b-lg bg-neutral-n10 overflow-hidden flex flex-row items-start justify-start row-gap-20px max-w-full text-base mq1050:flex-wrap">
                                         <div class="flex-1 bg-neutral-n0 flex flex-col items-start justify-start pt-6 px-6 pb-35px box-border gap-24px max-w-full lg:pt-5 lg:pb-5 lg:box-border mq750:min-w-full">
                                             <div class="self-stretch flex flex-col items-start justify-start gap-8px max-w-full">
@@ -107,9 +107,9 @@
                                     </div>
                                     <input class="add-button-container add-button" style="float: right;background-color: #9896f1;color: white;" type="button" id="Send" name="Send" value="Send">
                                 </div>
-                                <div style="width:30%;float: right;position: relative;">
+                                <!-- <div style="width:30%;float: right;position: relative;">
                                     <div id="result_<?php echo $value->id ?>" data-id="<?php echo $value->id ?>"></div>
-                                </div>
+                                </div> -->
 
                             </td>
                         </tr>
@@ -177,7 +177,7 @@
         e.preventDefault();
         $('#load').show();
         const text = $(this).html();
-        const idre = $(this).parents('.expandable-row').attr('data-id');
+        const idre = text; //$(this).parents('.expandable-row').attr('data-id');
         fetch('generate-image', {
                 method: 'POST',
                 headers: {
@@ -204,6 +204,7 @@
                 }
             })
             .catch(error => {
+                $('#load').hide();
                 document.getElementById('result_' + idre).innerText = 'Error: ' + error;
             });
     });

@@ -108,5 +108,6 @@ Route::group(['middleware' => ['auth', 'AdminPanelAccess']], function () {
     Route::get('/generate-freepik', function () {
         return view('admin.freepik.generate');
     });
-    Route::post('/generate-image', [FreepikController::class, 'generate']);
+    // Route::post('/generate-image', [FreepikController::class, 'generate']);
+    Route::post('blog/generate-image', [BlogController::class, 'generate'])->name('blog.generateText');
 });
