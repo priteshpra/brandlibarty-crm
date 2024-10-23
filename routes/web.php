@@ -94,7 +94,9 @@ Route::group(['middleware' => ['auth', 'AdminPanelAccess']], function () {
     Route::get('/getPromptData', [PromptController::class, 'getPromptData']);
     Route::get('/getPromptDataByName', [PromptController::class, 'getPromptDataByName']);
     Route::get('/getDomainData', [BlogController::class, 'getDomainData']);
-    Route::POST('/getBlogDisabled', [BlogController::class, 'getBlogDisabled']);
+    // Route::POST('/getBlogDisabled', [BlogController::class, 'getBlogDisabled']);
+    Route::post('blog/getBlogDisabled', [BlogController::class, 'getBlogDisabled']);
+
     Route::get('/getSettingsData', [SettingsController::class, 'getSettingsData']);
     Route::get('/savekeywordTitle', [MozController::class, 'savekeywordTitle']);
 

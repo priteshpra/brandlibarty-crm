@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Affiliate;
 use App\Models\Blog;
 use App\Models\Calendar;
 use App\Models\Keywords;
@@ -77,17 +78,26 @@ class BlogController extends Controller
         $date = Carbon::createFromFormat('d/m/Y', $datePick);
         $newDate = $date->format('Y-m-d');
         $keywordlists = Keywords::all()->where('status', 1);
+        $affiliateLinkData = Affiliate::all()->where('status', 1);
         $category = Category::all()->where('status', 1);
         $count = Blog::where('keywordName', $kewordShow)->first();
         if (!$count) {
 
             foreach ($content as $key => $value) {
                 if ($value) {
+                    $updatedHtml = $value;
+                    if($affiliateLinkData) {
+                        foreach ($affiliateLinkData as $key => $aff) {
+                            $replaceLink = '<a style="color:blue;" href="'.$aff->productLink.'">'.$aff->accountName.'</a>';
+                            $search = $aff->accountName;
+                            $updatedHtml = str_replace($search, $replaceLink, $value);
+                        }
+                    }
                     $Blog = new Blog();
                     $Blog->blog_name = $titleName;
                     $Blog->createdBy = $ModifiedBy;
                     $Blog->keywordName = $kewordShow;
-                    $Blog->content = $value;
+                    $Blog->content = $updatedHtml;
                     $Blog->blog_date = $newDate;
                     $Blog->status = 1;
                     $Blog->save();
@@ -154,15 +164,18 @@ class BlogController extends Controller
     public function getBlogDisabled(Request $request)
     {
         try {
-            $entry = Blog::where('id', $request->ID)->update(['content' => $request->htmlData]);
+            // $entry = Blog::where('id', $request->ID)->update(['content' => $request->htmlData]);
             // dd($entry);
-            $checkData = Blog::where('status', '1')->where('is_send', '0')->count();
-            Blog::where('id', $request->ID)
-                ->update(['is_send' => '1']);
-            if ($checkData == 0) {
-                return 0;
+            if($request->ID) {
+                $checkData = Blog::where('status', '1')->where('is_send', '0')->count();
+                Blog::where('id', $request->ID)
+                    ->update(['is_send' => '1']);
+                if ($checkData == 0) {
+                    return 0;
+                }
+                return 1;
             }
-            return 1;
+            return 0;
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
