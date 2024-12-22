@@ -86,9 +86,9 @@ class BlogController extends Controller
             foreach ($content as $key => $value) {
                 if ($value) {
                     $updatedHtml = $value;
-                    if($affiliateLinkData) {
+                    if ($affiliateLinkData) {
                         foreach ($affiliateLinkData as $key => $aff) {
-                            $replaceLink = '<a style="color:blue;" href="'.$aff->productLink.'">'.$aff->accountName.'</a>';
+                            $replaceLink = '<a style="color:blue;" href="' . $aff->productLink . '">' . $aff->accountName . '</a>';
                             $search = $aff->accountName;
                             $updatedHtml = str_replace($search, $replaceLink, $value);
                         }
@@ -166,10 +166,10 @@ class BlogController extends Controller
         try {
             // $entry = Blog::where('id', $request->ID)->update(['content' => $request->htmlData]);
             // dd($entry);
-            if($request->ID) {
+            if ($request->ID) {
                 $checkData = Blog::where('status', '1')->where('is_send', '0')->count();
                 Blog::where('id', $request->ID)
-                    ->update(['is_send' => '1']);
+                    ->update(['is_send' => '1', 'content' => $request->updateData]);
                 if ($checkData == 0) {
                     return 0;
                 }

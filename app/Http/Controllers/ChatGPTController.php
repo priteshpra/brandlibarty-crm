@@ -15,6 +15,7 @@ class ChatGPTController extends Controller
     {
         $this->openaiService = $openaiService;
         $this->openaiApiKey = config('services.openai.api_key');
+        ini_set('max_execution_time', 1200);
     }
 
     public function index()
@@ -52,34 +53,35 @@ class ChatGPTController extends Controller
         $total = count($request->input('message'));
         for ($i = 0; $i < $total; $i++) {
             // dd($request->input('message')[$i]);
-            $response = Http::withHeaders([
-                'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer ' . $this->openaiApiKey,
-            ])->post("https://api.openai.com/v1/chat/completions", [
-                "model" => "gpt-3.5-turbo",
-                'messages' => [
-                    [
-                        "role" => "system",
-                        "content" => $request->input('message')[$i]
+            $response = Http::retry(3, 200) // Retry up to 3 times with 200ms delay
+                ->timeout(120)->withHeaders([
+                    'Content-Type' => 'application/json',
+                    'Authorization' => 'Bearer ' . $this->openaiApiKey,
+                ])->post("https://api.openai.com/v1/chat/completions", [
+                    "model" => "gpt-3.5-turbo", //"gpt-4-turbo",
+                    'messages' => [
+                        [
+                            "role" => "system",
+                            "content" => $request->input('message')[$i]
+                        ],
+                        [
+                            "role" => "user",
+                            "content" => $request->input('message')[$i]
+                        ],
+                        [
+                            "role" => "assistant",
+                            "content" => $request->input('message')[$i]
+                        ],
+                        [
+                            "role" => "user",
+                            "content" => $request->input('message')[$i]
+                        ],
                     ],
-                    [
-                        "role" => "user",
-                        "content" => $request->input('message')[$i]
-                    ],
-                    [
-                        "role" => "assistant",
-                        "content" => $request->input('message')[$i]
-                    ],
-                    [
-                        "role" => "user",
-                        "content" => $request->input('message')[$i]
-                    ],
-                ],
-                'temperature' => 1.0,
-                'max_tokens' => 4000,
-                'frequency_penalty' => 0,
-                'presence_penalty' => 0,
-            ])->json();
+                    'temperature' => 1.0,
+                    'max_tokens' => 4000,
+                    'frequency_penalty' => 0,
+                    'presence_penalty' => 0,
+                ])->json();
             $updatedContent = preg_replace('/\*\*(.*?)\*\*/', '<h2 class="imageGet text">$1</h2><div id="result_$1" data-id="$1"></div>', $response['choices'][0]['message']['content']);
             $updatedContent2 = preg_replace('/\*(.*?)\*/', '<h4>$1</h4>', $updatedContent);
             $generatedText0 = $updatedContent2;

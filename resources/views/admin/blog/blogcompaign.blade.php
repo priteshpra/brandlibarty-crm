@@ -31,113 +31,113 @@
             <tbody id="table-body">
                 <?php if ($blogList != '') {
                     foreach ($blogList as $key => $value) { ?>
-                <tr class="removeTr_<?php echo $value->id ?>" data-id="<?php echo $value->id ?>">
-                    <td>
-                        <?php echo $value->blog_name ?>
-                    </td>
-                    <td>
-                        <?php echo $value->keywordName ?>
-                    </td>
-                    <td class="text-center">
-                        <div class="pritudes">
-                            <div class="tl-spinner-dot pritude">
-                                <i class="fas fa-check" style="color: green; font-size: 20px;display:none"></i>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="text-center">
-                        <div class="pritudes">
-                            <div class="tl-spinner-dot pritude"><i class="fas fa-check"
-                                    style="color: green; font-size: 20px;display:none"></i></div>
-                        </div>
-                    </td>
-                    <td class="text-center">
-                        <div class="pritudes">
-                            <div class="tl-spinner-dot pritude"><i class="fas fa-check"
-                                    style="color: green; font-size: 20px;display:none"></i></div>
-                        </div>
-                    </td>
-                    <td class="text-center">
-                        <div class="pritudes">
-                            <div class="tl-spinner-dot pritude"><i class="fas fa-check"
-                                    style="color: green; font-size: 20px;display:none"></i></div>
-                        </div>
-                    </td>
-                    <td class="text-center">
-                        <div class="pritudes">
-                            <div class="tl-spinner-dot pritude"><i class="fas fa-check"
-                                    style="color: green; font-size: 20px;display:none"></i></div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="button-container">
-                            <button class="edit-btn" data-key="${record.key}" data-id="<?php echo $value->id ?>">
-                                <i class="fas fa-edit" style="color: blue; font-size: 25px;"></i>
-                            </button>
-
-                            <form action="{{ route('blog.destroy', $value->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger delete-btn"><i
-                                        class="fas fa-trash-alt"></i></button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr class="expandable-row" id="show_<?php echo $value->id ?>" data-id="<?php echo $value->id ?>"
-                    style="display: none;">
-                    <td colspan="8 " data-id="<?php echo $value->id ?>">
-                        <div style="width:100%;">
-                            <div
-                                class="self-stretch rounded-t-none rounded-b-lg bg-neutral-n10 overflow-hidden flex flex-row items-start justify-start row-gap-20px max-w-full text-base mq1050:flex-wrap">
-                                <div
-                                    class="flex-1 bg-neutral-n0 flex flex-col items-start justify-start pt-6 px-6 pb-35px box-border gap-24px max-w-full lg:pt-5 lg:pb-5 lg:box-border mq750:min-w-full">
-                                    <div
-                                        class="self-stretch flex flex-col items-start justify-start gap-8px max-w-full">
-                                        <div class="text-3xl">
-                                            <h6>
-                                                <?php echo $value->blog_name ?>
-                                            </h6>
-                                        </div>
+                        <tr class="removeTr_<?php echo $value->id ?>" data-id="<?php echo $value->id ?>">
+                            <td>
+                                <?php echo $value->blog_name ?>
+                            </td>
+                            <td>
+                                <?php echo $value->keywordName ?>
+                            </td>
+                            <td class="text-center">
+                                <div class="pritudes">
+                                    <div class="tl-spinner-dot pritude">
+                                        <i class="fas fa-check" style="color: green; font-size: 20px;display:none"></i>
                                     </div>
-                                    <div
-                                        class="self-stretch flex flex-col items-start justify-start gap-12px max-w-full">
-                                        <div
-                                            class="self-stretch flex flex-col items-start justify-start gap-8px max-w-full">
-                                            <div
-                                                class="self-stretch flex flex-row items-center justify-center max-w-full text-sm text-neutral-n400">
-                                                <div class="flex-1 relative leading-20px inline-block max-w-full">
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <div class="pritudes">
+                                    <div class="tl-spinner-dot pritude"><i class="fas fa-check"
+                                            style="color: green; font-size: 20px;display:none"></i></div>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <div class="pritudes">
+                                    <div class="tl-spinner-dot pritude"><i class="fas fa-check"
+                                            style="color: green; font-size: 20px;display:none"></i></div>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <div class="pritudes">
+                                    <div class="tl-spinner-dot pritude"><i class="fas fa-check"
+                                            style="color: green; font-size: 20px;display:none"></i></div>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <div class="pritudes">
+                                    <div class="tl-spinner-dot pritude"><i class="fas fa-check"
+                                            style="color: green; font-size: 20px;display:none"></i></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="button-container">
+                                    <button class="edit-btn" data-key="${record.key}" data-id="<?php echo $value->id ?>">
+                                        <i class="fas fa-edit" style="color: blue; font-size: 25px;"></i>
+                                    </button>
 
-                                                    <?php //$desc = preg_replace('/\#\#(.+)\#\#/sU', '<b>$1</b>', $value->content);
+                                    <form action="{{ route('blog.destroy', $value->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger delete-btn"><i
+                                                class="fas fa-trash-alt"></i></button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="expandable-row" id="show_<?php echo $value->id ?>" data-id="<?php echo $value->id ?>"
+                            style="display: none;">
+                            <td colspan="8 " data-id="<?php echo $value->id ?>">
+                                <div style="width:100%;">
+                                    <div
+                                        class="self-stretch rounded-t-none rounded-b-lg bg-neutral-n10 overflow-hidden flex flex-row items-start justify-start row-gap-20px max-w-full text-base mq1050:flex-wrap">
+                                        <div
+                                            class="flex-1 bg-neutral-n0 flex flex-col items-start justify-start pt-6 px-6 pb-35px box-border gap-24px max-w-full lg:pt-5 lg:pb-5 lg:box-border mq750:min-w-full">
+                                            <div
+                                                class="self-stretch flex flex-col items-start justify-start gap-8px max-w-full">
+                                                <div class="text-3xl">
+                                                    <h6>
+                                                        <?php echo $value->blog_name ?>
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="self-stretch flex flex-col items-start justify-start gap-12px max-w-full">
+                                                <div
+                                                    class="self-stretch flex flex-col items-start justify-start gap-8px max-w-full">
+                                                    <div
+                                                        class="self-stretch flex flex-row items-center justify-center max-w-full text-sm text-neutral-n400">
+                                                        <div class="flex-1 relative leading-20px inline-block max-w-full">
+
+                                                            <?php //$desc = preg_replace('/\#\#(.+)\#\#/sU', '<b>$1</b>', $value->content);
                                                             $formating = array("###", "##", '"< >"');
                                                             $html = array("<b>", "<b>", "<br/>");
                                                             $desc = str_replace($formating, $html, $value->content);
                                                             $desc = strip_tags($desc, ['p', 'b', 'i', 'br']);
                                                             ?>
-                                                    {!! $value->content !!}
+                                                            {!! $value->content !!}
+                                                        </div>
+                                                    </div>
                                                 </div>
+
                                             </div>
+
                                         </div>
-
                                     </div>
-
-                                </div>
-                            </div>
-                            {{-- <input class="add-button-container add-button"
+                                    {{-- <input class="add-button-container add-button"
                                 style="float: right;background-color: #9896f1;color: white;" type="button" id="Send"
                                 name="Send" value="Send"> --}}
-                        </div>
-                        <!-- <div style="width:30%;float: right;position: relative;">
+                                </div>
+                                <!-- <div style="width:30%;float: right;position: relative;">
                                     <div id="result_<?php echo $value->id ?>" data-id="<?php echo $value->id ?>"></div>
                                 </div> -->
 
-                    </td>
-                </tr>
-                <?php }
+                            </td>
+                        </tr>
+                    <?php }
                 } else { ?>
-                <tr>
-                    <td>No records</td>
-                </tr>
+                    <tr>
+                        <td>No records</td>
+                    </tr>
 
                 <?php } ?>
             </tbody>
@@ -181,26 +181,28 @@
                     var cellData = $(this).html();
                     var rowID = $(this).attr('data-id');
                     var h2FindText = $(this).find('h2').text();
-                    if(h2FindText) {
+                    if (h2FindText) {
                         $(this).find('h2').each(async function(h2Index) {
                             var h2Text = $(this).text(); // Get the text of each h2
-                            // getImagesH2tag(h2Text, rowID);
+                            getImagesH2tag(h2Text, rowID);
                         });
                     }
                 });
+                var lastHtml = $("#show_" + trRowID).html();
                 $.ajax({
                     url: 'getBlogDisabled',
                     type: 'POST',
-                    async:false,
+                    async: false,
                     data: {
                         _token: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                         status: '0',
-                        ID: trRowID
+                        ID: trRowID,
+                        updateData: lastHtml
                     },
                     success: function(response) {
-                        if(response == 1) {
+                        if (response == 1) {
                             setTimeout(() => {
-                                $('.removeTr_'+trRowID).remove();
+                                $('.removeTr_' + trRowID).remove();
                             }, 15000);
                         }
                     }
@@ -209,6 +211,7 @@
         }
         processTable();
     });
+
     function getImagesH2tag(h2TagText, rowID) {
         $.ajax({
             url: 'generate-image',
