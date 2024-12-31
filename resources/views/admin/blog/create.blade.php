@@ -1,7 +1,42 @@
 @extends('layouts.admin')
 @section('content')
-<link rel="stylesheet" href="{{ asset('assets/admin/css/create blog') }}">
+<style>
+    #loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
+    .spinner {
+        border: 8px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 8px solid #3498db;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+<link rel="stylesheet" href="{{ asset('assets/admin/css/create blog') }}">
+<div id="loader" style="display: none;">
+    <div class="spinner"></div>
+</div>
 <div class="page-content">
     <!-- main div here page -->
     <div class="container-fluid mt-5 bg-light ">
@@ -21,7 +56,8 @@
                                         <option value="Select Category">Select Category</option>
                                         @if($category)
                                         @foreach($category as $category)
-                                        <option value="{{ $category->categoryName}}">{{ $category->categoryName}}</option>
+                                        <option value="{{ $category->categoryName}}">{{ $category->categoryName}}
+                                        </option>
                                         @endforeach
                                         @endif
                                     </select>
@@ -34,7 +70,8 @@
                                     </select>
                                 </th>
                                 <th class="date-column" style="border: none;">
-                                    <input type="text" id="dateSelect" name="dateSelect" placeholder="Date" readonly style="width: 100%; background-color: #9896f1; border: none; color: white; font-weight: bold;">
+                                    <input type="text" id="dateSelect" name="dateSelect" placeholder="Date" readonly
+                                        style="width: 100%; background-color: #9896f1; border: none; color: white; font-weight: bold;">
                                 </th>
                             </tr>
                         </thead>
@@ -70,14 +107,18 @@
                         <ul id="keywordList" style="padding-top: 10px;">
                             @if(!isset($keywordlists))
                             @foreach($keywordlist as $key => $keyword)
-                            <li id="{{$keyword}}"><label><input type="radio" name="keyword" value="{{$keyword}}"> {{$keyword}}</label>
-                                <input type="hidden" name="title" value="{{ $titlelist[$key] }}" id="titles_{{str_replace(' ','_',$keyword)}}" />
+                            <li id="{{$keyword}}"><label><input type="radio" name="keyword" value="{{$keyword}}">
+                                    {{$keyword}}</label>
+                                <input type="hidden" name="title" value="{{ $titlelist[$key] }}"
+                                    id="titles_{{str_replace(' ','_',$keyword)}}" />
                             </li>
                             @endforeach
                             @else
                             @foreach($keywordlists as $key => $keyword)
-                            <li id=" {{$keyword->keywordName}}"><label><input type="radio" name="keyword" value="{{$keyword->keywordName}}"> {{$keyword->keywordName}}</label>
-                                <input type="hidden" name="title" value="{{ $titlelist[$key] }}" id="titles_{{str_replace(' ','_',$keyword->keywordName)}}" />
+                            <li id=" {{$keyword->keywordName}}"><label><input type="radio" name="keyword"
+                                        value="{{$keyword->keywordName}}"> {{$keyword->keywordName}}</label>
+                                <input type="hidden" name="title" value="{{ $titlelist[$key] }}"
+                                    id="titles_{{str_replace(' ','_',$keyword->keywordName)}}" />
                             </li>
                             @endforeach
                             @endif
@@ -93,8 +134,8 @@
                         <textarea style="display:none" id="contentText4" name="contentText[]"></textarea>
                         <textarea style="display:none" id="contentText5" name="contentText[]"></textarea>
                         <div style="display: flex; justify-content: space-between; margin-top: 10px;">
-                            <!-- <button onclick="createTable()" disabled id="createBtn" class="btn btn-success">Create</button> -->
-                            <input onclick="createTable()" type="submit" name="submit" id="createBtn" class="btn btn-success" disabled value="Create" />
+                            <input onclick="createTable()" type="submit" name="submit" id="createBtn"
+                                class="btn btn-success" disabled value="Create" />
                             <button onclick="cancelCreation()" class="btn btn-danger">Cancel</button>
                         </div>
                     </div>
@@ -129,8 +170,16 @@
 
 
 <script>
+    function showLoader() {
+        document.getElementById('loader').style.display = 'flex';
+    }
+
+    function hideLoader() {
+        document.getElementById('loader').style.display = 'none';
+    }
     $(function() {
         $("#PromptSelect").change(function() {
+            showLoader();
             var prmtVal = $('option:selected', this).text();
             var prmtArr = prmtVal.split(" - ");
             keywordTitle = $("#keywordTitle").val();
@@ -162,18 +211,21 @@
                             },
                             complete: function() {
                                 $('#createBtn').val('Create');
-                                $("#createBtn").attr('disabled', false);
                             },
                             success: function(response) {
+                                hideLoader();
                                 setTimeout(() => {
                                     for (i = 0; i < response.length; ++i) {
                                         messagedata = response;
                                         $('#contentText' + i).html(messagedata[i]);
                                     }
-                                }, 2000);
+                                }, 3000);
                                 console.log(' +++ ', response.length);
                             },
                             error: function(xhr) {
+                                hideLoader();
+                                alert("Oops! The content is not ready yet. Please regenerate the content.");
+                                $("#PromptSelect").val('').css('border-color','red');
                                 console.log(xhr.responseText);
                             }
                         });
@@ -197,7 +249,7 @@
                     arrDomain = [];
                     arrPrompt = [];
                     var mySelect = $('#PromptSelect');
-                    mySelect.html('<option>Prompt Select</option>');
+                    mySelect.html('<option value="">Prompt Select</option>');
                     if (response.length > 0) {
                         $.each(response, function(index) {
                             arrDomain[index] = response[index].projectName;
@@ -237,6 +289,7 @@
             onSelect: function(dateText) {
                 $("#dateSelect").data("selected-date", dateText);
                 $("#datePick").val(dateText);
+                $("#createBtn").attr('disabled', false);
             }
         });
 
